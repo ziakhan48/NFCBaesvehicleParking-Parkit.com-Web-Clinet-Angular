@@ -33,7 +33,7 @@ export class UserService extends BaseService {
     this.baseUrl = configService.getApiURI();
   }
 
-    register(email: string, password: string, firstName: string, lastName: string, location: string) {
+    register(email: string, password: string, firstName: string, lastName: string) {
     // tslint:disable-next-line:prefer-const
     let body = JSON.stringify({ email, password, firstName, lastName, location });
     // tslint:disable-next-line:prefer-const

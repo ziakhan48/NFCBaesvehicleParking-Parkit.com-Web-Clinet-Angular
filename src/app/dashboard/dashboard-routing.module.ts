@@ -14,7 +14,7 @@ export const routing: ModuleWithProviders = RouterModule.forChild([
       component: RootComponent, canActivate: [Auth],
 
       children: [
-       { path: '', component: HomeComponent },
+      //  { path: '', component: HomeComponent },
        { path: 'home',  component: HomeComponent },
        { path: 'settings',  component: SettingComponent },
       ]
