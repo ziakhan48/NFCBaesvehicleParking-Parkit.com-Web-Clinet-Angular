@@ -1,10 +1,11 @@
+import { AdminGuard } from 'src/app/admin.guard';
+import { Userdetail } from './../models/userdetail.model';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ConfigService } from '../utils/config.service';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { BaseService } from './base.service';
 import { map, catchError } from 'rxjs/operators';
-import { Userregisteration } from '../models/userregisteration.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { Userregisteration } from '../models/userregisteration.interface';
 @Injectable()
 export class UserService extends BaseService {
 
-
+  userData = new BehaviorSubject<Userdetail>(new Userdetail());
   // tslint:disable-next-line:no-inferrable-types
   baseUrl: string = '';
 
@@ -23,7 +24,7 @@ export class UserService extends BaseService {
   authNavStatus$ = this._authNavStatusSource.asObservable();
 
   private loggedIn = false;
-
+  some  = null;
   constructor(private http: Http, private configService: ConfigService) {
     super();
     this.loggedIn = !!localStorage.getItem('auth_token');
@@ -45,7 +46,7 @@ export class UserService extends BaseService {
 
 
 
-    return this.http.post(this.baseUrl + '/Account', body, options)
+    return this.http.post(this.baseUrl + '/api/Account', body, options)
       .pipe(map(() => true))
       .pipe(catchError(this.handleError));
   }
@@ -56,7 +57,7 @@ export class UserService extends BaseService {
 
     return this.http
       .post(
-      this.baseUrl + '/auth/login',
+      this.baseUrl + '/api/auth/login',
       JSON.stringify({ userName, password }), { headers }
       )
       .pipe(map(res => res.json()))
@@ -64,35 +65,68 @@ export class UserService extends BaseService {
         localStorage.setItem('auth_token', res.auth_token);
         this.loggedIn = true;
         this._authNavStatusSource.next(true);
-        return true;
+        this.setUserDetails();
+        return res;
       }))
       .pipe(catchError(this.handleError));
   }
 
+
+
+
+  setUserDetails() {
+    if (localStorage.getItem('auth_token')) {
+      const userDetails = new Userdetail();
+      const decodeUserDetails = JSON.parse(window.atob(localStorage.getItem('auth_token').split('.')[1]));
+
+      userDetails.userName = decodeUserDetails.sub;
+      userDetails.firstName = decodeUserDetails.firstName;
+      userDetails.isLoggedIn = true;
+      userDetails.role = decodeUserDetails.typ;
+
+      this.userData.next(userDetails);
+    }
+  }
   logout() {
     localStorage.removeItem('auth_token');
     this.loggedIn = false;
+    this.userData.next(new Userdetail());
     this._authNavStatusSource.next(false);
   }
 
   isLoggedIn() {
+    this.setUserDetails();
     return this.loggedIn;
   }
 
-  facebookLogin(accessToken: string) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const body = JSON.stringify({ accessToken });
-    return this.http
-      .post(
-      this.baseUrl + '/externalauth/facebook', body, { headers })
-      .pipe(map(res => res.json()))
-      .pipe(map(res => {
-        localStorage.setItem('auth_token', res.auth_token);
-        this.loggedIn = true;
-        this._authNavStatusSource.next(true);
-        return true;
-      }))
-      .pipe(catchError(this.handleError));
-  }
+  // facebookLogin(accessToken: string) {
+  //   const headers = new Headers();
+  //   headers.append('Content-Type', 'application/json');
+  //   const body = JSON.stringify({ accessToken });
+  //   return this.http
+  //     .post(
+  //     this.baseUrl + '/externalauth/facebook', body, { headers })
+  //     .pipe(map(res => res.json()))
+  //     .pipe(map(res => {
+  //       localStorage.setItem('auth_token', res.auth_token);
+  //       this.loggedIn = true;
+  //       this._authNavStatusSource.next(true);
+  //       return true;
+  //     }))
+  //     .pipe(catchError(this.handleError));
+  // }
+
+
+  // roleMatch(allowedRoles): boolean {
+  //   let isMatch = false;
+  //   const payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+  //   const userRole = payLoad.role;
+  //   allowedRoles.forEach(element => {
+  //     if (userRole === element) {
+  //       isMatch = true;
+  //       return false;
+  //     }
+  //   });
+  //   return isMatch;
+  // }
 }

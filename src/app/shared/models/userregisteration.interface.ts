@@ -4,6 +4,7 @@ export interface Userregisteration {
     email: string;  
     password: string;
     firstName: string;
+    confirmPassword: string;
     // tslint:disable-next-line:typedef-whitespace
     lastName:  string;
     location: string;

@@ -1,0 +1,60 @@
+<div>
+    <h2 style="margin-top: 60px;margin-left: 50px;">
+      <i class="fa fa-dashboard"></i><b> DashBoard</b>
+    </h2>
+    <hr style="margin-top: 0rem;">
+  </div>
+  <div class="row" style="margin-left: 0px;">
+    <a routerLink="/admin/alluser" style="color:#2471A3 ;">
+      <div class="card text-white ml-5 mt-4" 
+      style="width: 230px;height: 150px;background-color: #2471A3 ;">
+        
+        <div class="card-header"> <i  class="fa fa-users" aria-hidden="true"></i> Total Users</div>
+       
+        <div class="card-body text-center">
+        <h4>{{dashbaordcount?.userCount}}</h4>
+        </div>
+    
+      </div>
+    </a>
+   
+    <a routerLink="/admin/parkinglist" style="color:#D35400;">
+      <div class="card text-white  ml-5 mt-4" style="width: 230px;height: 150px;background-color: #D35400;">
+        <div class="card-header"> <i class="fa fa-car" aria-hidden="true"></i>Total Parking</div>
+        <div class="card-body text-center">
+       <h4>{{dashbaordcount?.parkingCount}}</h4>
+        </div>
+      </div>
+    </a>
+    
+    <a style="color: #138D75;" routerLink="/admin/handleruser">
+      <div class="card text-white  ml-5 mt-4" style="width: 230px;height: 150px;background-color: #138D75;">
+        <div class="card-header">
+          <i class="fa fa-user-circle" aria-hidden="true"></i> Handler Count</div>
+        <div class="card-body text-center">
+      <h4>{{dashbaordcount?.handlerCount}}</h4>
+        </div>
+      </div>
+    </a>
+    
+    <a style="color: #D4AC0D ;" routerLink="/admin/customeruser">
+      <div class="card text-white  ml-5 mt-4" style="width: 230px;height: 150px;background-color: #D4AC0D ;">
+        <div class="card-header">
+          <i class="fa fa-user" aria-hidden="true"></i> Customer Count</div>
+        <div class="card-body text-center">
+           <h4>{{dashbaordcount?.customerCount}}</h4>
+        </div>
+      </div>
+    </a>
+    
+    <a style="color: #229954;">
+      <div class="card text-white  ml-5 mt-4" style="width: 230px;height: 150px;background-color: #229954;">
+        <div class="card-header">
+          <i class="fa fa-briefcase"></i> Role Count</div>
+        <div class="card-body text-center">
+            <h4>{{dashbaordcount?.roleCount}}</h4>
+        </div>
+      </div>
+    </a>
+ 
+  </div>

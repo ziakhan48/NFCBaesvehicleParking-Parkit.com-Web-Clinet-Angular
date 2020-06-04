@@ -29,7 +29,7 @@ export class DashboardService extends BaseService {
       headers.append('Authorization', `Bearer ${authToken}`);
 
     // tslint:disable-next-line:quotemark
-      return this.http.get(this.baseUrl + "/dashboard/home", {headers})
+      return this.http.get(this.baseUrl + "/api/dashboard/home", {headers})
       .pipe(map(response => response.json()))
       .pipe(catchError(this.handleError));
   }

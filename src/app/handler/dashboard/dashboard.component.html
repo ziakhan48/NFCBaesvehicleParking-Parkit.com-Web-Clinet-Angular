@@ -1,0 +1,60 @@
+<div>
+  <h2 style="margin-top: 60px;margin-left: 50px;">
+    <i class="fa fa-dashboard"></i><b> DashBoard</b>
+  </h2>
+  <hr style="margin-top: 0rem;">
+</div>
+<div class="row" style="margin-left: 0px;">
+  <a  style="color:#2471A3 ;" routerLink="/handler/slots">
+    <div class="card text-white ml-5 mt-4" style="width: 230px;height: 150px;background-color:#2471A3 ;">
+      <div class="card-header"> <i  class="fa fa-sitemap fa-1x" aria-hidden="true"></i> Total Slots</div>
+      <div class="card-body text-center">
+      <h4>{{dashbaordCount?.totalSlotsCount}}</h4>
+      </div>
+    </div>
+  </a>
+ <a style="color:#D35400;">
+  <div class="card text-white  ml-5 mt-4"
+   style="width: 230px;height: 150px;background-color: #D35400;">
+    <div class="card-header"> 
+      <i class="fa fa-lock" aria-hidden="true"></i> Reserved Slot</div>
+    <div class="card-body text-center">
+   <h4>{{dashbaordCount?.reservedSlotCount}}</h4>
+    </div>
+  </div>
+ </a>
+ 
+ <a style="color: #138D75;">
+  <div class="card text-white  ml-5 mt-4"
+   style="width: 230px;height: 150px;background-color: #138D75;">
+    <div class="card-header">
+      <i class="fa fa-unlock" aria-hidden="true"></i> Not Reserved</div>
+    <div class="card-body text-center">
+  <h4>{{dashbaordCount?.notReservedSlotCount}}</h4>
+    </div>
+  </div>
+ </a>
+
+ <a style="color: #229954;" routerLink="/handler/slotreservationlist">
+  <div class="card text-white ml-5 mt-4" 
+  style="width: 230px;height: 150px;background-color:#229954 ;">
+    <div class="card-header">
+      <i class="fa fa-calculator" aria-hidden="true"></i> Total Reservation</div>
+    <div class="card-body text-center">
+       <h4>{{dashbaordCount?.totalReservation}}</h4>
+    </div>
+  </div>
+ </a>
+ 
+ <a style="color: #D4AC0D">
+  <div class="card text-white   ml-5 mt-4"
+   style="width: 230px;height: 150px;background-color:  #D4AC0D;">
+    <div class="card-header">
+      <i class="fa fa-cc-visa"></i> Successfull Payments</div>
+    <div class="card-body text-center">
+        <h4>{{dashbaordCount?.successfullPaymentCount}}</h4>
+    </div>
+  </div>
+ </a>
+
+</div>

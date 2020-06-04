@@ -21,7 +21,9 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   submitted: boolean = false;
   credentials: Credentials = { email: '', password: '' };
 
-  constructor(private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private userService: UserService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
 
@@ -33,6 +35,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
          // tslint:disable-next-line:no-string-literal
          this.credentials.email = param['email'];
       });
+
   }
 
    ngOnDestroy() {
@@ -44,13 +47,15 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.isRequesting = true;
     this.errors = '';
+    const returnUrl = this.activatedRoute.snapshot.queryParamMap.get('returnUrl') || '/';
     if (valid) {
       this.userService.login(value.email, value.password)
         .pipe(finalize(() => this.isRequesting = false))
         .subscribe(
         result => {
           if (result) {
-            this.router.navigate(['/dashboard/home']);
+          // this.router.navigate([returnUrl]);
+           this.router.navigate(['/home']);
           }
         },
         error =>

@@ -1,0 +1,71 @@
+
+    <h5 class="display-4"> <i class="fa fa-sitemap" aria-hidden="true"></i>
+        <b>Slots</b></h5><h6>Reservation</h6>
+<hr>
+<form #form = "ngForm" autocomplete="off" (submit)="onsubmit(form)">
+<div class="form-row">
+    <div class="form-group col-md-10">
+        <input type="hidden"
+                name = "slotid" 
+                class="form-control"
+                #slotId = "ngModel" [(ngModel)] = "formDatareservation.slotId"
+                placeholder="Slot Id">
+    </div>
+  
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-10">
+        <input type="text"
+                name = "customerName" 
+                class="form-control"
+                #slotId = "ngModel" [(ngModel)] = "formDatareservation.customerName"
+                placeholder="Customer Name">
+    </div>
+  
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-10">
+        <input type="text"
+                name = "customerPhoneno" 
+                class="form-control"
+                #slotId = "ngModel" [(ngModel)] = "formDatareservation.customerPhoneno"
+                placeholder="Phone: e.g (+9234.......)">
+    </div>
+  
+</div>
+
+<div class="form-row">
+    <div class="form-group col-md-10">
+        <input type="email"
+                name = "customerEmail" 
+                class="form-control"
+                #slotId = "ngModel" [(ngModel)] = "formDatareservation.customerEmail"
+                placeholder="Email e.g(example@gmail.com)">
+    </div>
+  
+</div>
+
+
+<div class="form-row">
+    <div class="form-group col-md-10">
+        <input type="number"
+                name = "carNo" 
+                class="form-control"
+                #slotId = "ngModel" [(ngModel)] = "formDatareservation.carNo"
+                placeholder="Car No">
+    </div>
+  
+</div>
+
+
+<div class="form-row">
+    <div class="col-md-8"></div>
+    <div class="form-group col-md-4 " >
+            <button type="submit" class="btn btn-primary btn-md text-white " style="margin-right: 8px"><i class="fa fa-save"><span class="ml-1"></span></i>Save</button>
+            <button type="button" class="btn btn-danger btn-md float-right " (click) ="closeModel()"><i class="fa fa-close"></i><span class="ml-1"></span>Cancel</button>
+    </div>
+</div>
+</form>
+

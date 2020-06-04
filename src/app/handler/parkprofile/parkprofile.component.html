@@ -1,0 +1,101 @@
+<div>
+  <div class="row">
+    <h2 style="margin-top: 110px;margin-left: 50px;">
+      <i class="fa fa-car" aria-hidden="true"></i><b> Parking Profile</b>
+  </h2>
+    <button class="btn btn-info"  routerLink="/handler/parkingimage" style="margin-top: 54px;margin-left: 590px;height: 40px;">
+    <i class="fa fa-picture-o"></i> Parking images <i class="fa fa-location-arrow"></i>	
+     </button>
+  </div>
+  
+   
+    <hr style="margin-top: 0rem;">
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="column" style="margin-left: 10px;">
+        <div class="card" style="width: 22rem;">
+          <img *ngIf="parkingprofile?.image  ; else emptyimage" src={{parkingprofile?.image}}  style="width: 100%">
+          <ng-template #emptyimage>
+            <img  src="./assets/park.jpg" id="handlerimage"  style="width: 100%">
+            </ng-template>
+            <div class="card-body">
+              <div class="row" style="margin-bottom:15px;width: 400px;">
+                <div class="col-md-3">
+                  <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                  <button type="button" style="width: 150px;" class="btn btn-success" (click)="file.click()">
+                   Upload Picture
+                  </button>
+                </div>
+                <!-- <div class="col-md-4">
+                  <span class="upload" *ngIf="progress > 0">
+                    {{progress}}%
+                  </span>
+                  <span class="upload" *ngIf="message">
+                    {{message}}
+                  </span>
+                </div> -->
+              </div>
+              <h4 class="card-title">
+                  {{parkingprofile?.name}}
+                  </h4>
+                  <h5> Description :</h5>
+              <p class="card-text">
+                  {{parkingprofile?.description}}
+              </p>
+            </div>
+            <h5 style="margin-left: 20px;"><strong><u>Detail</u></strong></h5>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h6>City</h6>      {{parkingprofile?.city}}</li>
+            <li class="list-group-item"><h6>No Of Slots </h6>   {{parkingprofile?.noOfSlot}}</li>
+            <li class="list-group-item"><h6>Address</h6>   {{parkingprofile?.address}}</li>
+            </ul>
+            <h5 style="margin-left: 20px;"><strong><u>Contacts</u></strong></h5>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h6>Phone No </h6>   {{parkingprofile?.phoneNo}}</li>
+            <li class="list-group-item"><h6>Email </h6>    {{parkingprofile?.email}}</li>
+              </ul>
+          </div>
+      </div>
+
+       
+      <div class="column" style="margin-left: -40px;margin-top: -30px;">
+        <form #form ="ngForm" autocomplete="off" (submit) = "Update(form)">
+            <input type="hidden"  name="parkingId" placeholder="Your name.." 
+            #parkingId = "ngModel" [(ngModel)] ="parkingprofile.id">
+          <label for="fname">Parking Name</label>
+          <input type="text" id="fname" name="name" placeholder="Parking name.." 
+          #Notes = "ngModel" [(ngModel)] = "parkingprofile.name">
+          <label for="lname">City</label>
+          <input  type="text" id="lname" name="city" placeholder="Parking City.."
+          #city = "ngModel" [(ngModel)] ="parkingprofile.city">
+          <label for="lname">Address</label>
+          <input  type="text" id="lname" name="address" placeholder="address.."
+           #address = "ngModel" [(ngModel)] ="parkingprofile.address">
+          <label>Description</label>
+            <textarea type="text" id="form7" class="md-textarea form-control" name="description"  rows="5" cols="40" 
+            #description = "ngModel" [(ngModel)] ="parkingprofile.description"></textarea>
+            <label>Parking Facilities</label>
+            <div class="row">
+              
+                <input type="checkbox" name="guestRoom" #guestRoom="ngModel" [(ngModel)] ="parkingprofile.guestRoom"
+                style="margin-left: 30px;margin-top: 5px;"> <p style="font-weight: 500;margin-left: 5;">Guest Room</p>
+             
+              
+                <input type="checkbox" name="onlinePayment" #onlinePayment="ngModel" [(ngModel)] ="parkingprofile.onlinePayment"
+                style="margin-left: 30px;margin-top: 5px;"> <p style="font-weight: 500;margin-left: 5;">Online Payment</p>
+             
+                <input type="checkbox" name="serviceStation" #serviceStation="ngModel" [(ngModel)] ="parkingprofile.serviceStation"
+                 style="margin-left: 30px;margin-top: 5px;"> <p style="font-weight: 500;margin-left: 5;">Vehicle Service Station</p>
+       
+             
+            
+             
+            </div>
+            <button type="submit" class="btn btn-primary btn-md text-white btn-block" style="margin-right: 8px"><i class="fa fa-pencil"><span class="ml-1"></span></i>Update</button>
+        </form>
+    
+  </div>
+</div>
+</div>

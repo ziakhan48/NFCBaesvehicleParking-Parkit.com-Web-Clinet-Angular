@@ -1,0 +1,38 @@
+<div>
+    <h2 style="margin-top: 60px;margin-left: 50px;">
+      <i class="fa fa-picture-o"></i><b> Parking Images</b>
+    </h2>
+    <hr style="margin-top: 0rem;">
+  </div>
+  <div class="row" style="margin-left: 850px;margin-top: 20px;">
+    <div class="row" style="margin-bottom:15px;width: 200px;">
+        <div class="col-md-3">
+          <input type="file" #file placeholder="Choose file"  style="display:none;" (change)="uploadFile(file.files)">
+          <button type="button" style="width: 210px;" class="btn btn-info" (click)="file.click()">
+          <i class="fa fa-plus"></i> Upload Parking Images
+          </button>
+        </div>
+        <!-- <div class="col-md-4">
+          <span class="upload" *ngIf="progress > 0">
+            {{progress}}%
+          </span>
+          <span class="upload" *ngIf="message">
+            {{message}}
+          </span>
+        </div> -->
+      </div>
+  </div>
+  <div class="row" style="margin-top: 25px;margin-left: 0px;">
+    
+        <div class="alert alert-warning" style="margin-left: 460px;width: 200px;"
+        *ngIf="parkimageservice.parkingimages?.length==0">
+          <i class="fa fa-picture-o"></i>  No Image Found...
+       
+    </div>
+   
+
+    <div *ngFor="let images of parkimageservice.parkingimages;let i=index">
+        <img class="shadow-sm" src={{images?.image}} style="width: 170px;height: 170px;margin-left: 40px;margin-top: 20px;">
+        <input type="hidden"  #id = "ngModel" [(ngModel)] ="images.id">
+    </div>
+  </div>

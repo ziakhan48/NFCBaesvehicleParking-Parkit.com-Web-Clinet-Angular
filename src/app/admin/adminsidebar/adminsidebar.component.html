@@ -1,0 +1,63 @@
+
+ <div class="row" style="margin-top: 0px;">
+    <div class="card   mb-3" style="max-width: 16rem;margin-top:56px;margin-left: -15px;background-color: white;position: fixed;">
+      <div class="card-header  text-center" style="background-color: white;">
+      	<div class="profile-userpic" style="margin-top: 0px;">
+          <img src={{adminProfile?.image}} id="handlerimage"  style="width: 100px; height: 100px;margin-left: 10px;">
+				</div>
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{adminProfile?.firstName +' '+adminProfile?.lastName}} (Admin)
+					</div>
+					<div class="profile-usertitle-job">
+						{{adminProfile?.email}}
+					</div>
+				</div>
+				</div>
+     <div class="card-body" style="background-color: white;;"> 
+         <nav class="col-sm-7 col-md-12 d-none d-sm-block  sidebar">
+           <ul class="nav nav-pills flex-column">
+             <li class="nav-item">
+               <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/admindashbaord">
+                 <i class="fa fa-dashboard"></i> DashBoard</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/adminprofile">
+                 <i class="fa fa-id-card" aria-hidden="true"></i> Admin Profile</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/parkinglist">
+                 <i class="fa fa-car"></i> Parking</a>
+             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/alluser">
+                <i class="fa fa-users" aria-hidden="true"></i> All Users</a>
+            </li>
+             <li class="nav-item">
+                 <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/customeruser">
+                   <i class="fa fa-users" aria-hidden="true"></i> Customer Users</a>
+               </li>
+               <li class="nav-item">
+                <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/handleruser">
+                  <i class="fa fa-users" aria-hidden="true"></i> Parking Handlers</a>
+              </li>
+   
+               <li class="nav-item">
+                 <a class="nav-link" href="#" routerLinkActive="active" routerLink="/admin/profilesetting">
+                   <i class="fa fa-key" aria-hidden="true"></i> Profile Setting</a>
+               </li>
+   
+               <li class="nav-item">
+                 <a class="nav-link" href="#" routerLinkActive="active" href="#" (click)="logout()">
+                   <i class="fa fa-sign-out"></i> LogOut</a>
+               </li>
+               
+           </ul>
+         </nav>   
+         </div>
+         </div>
+         <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3" style="position: relative;">
+             <router-outlet></router-outlet>
+         </main>       
+     </div>
+      

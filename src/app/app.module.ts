@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // tslint:disable-next-line:no-trailing-whitespace
@@ -10,11 +11,14 @@ import { App } from './app.routing';
 import { HttpModule, XHRBackend } from '@angular/http';
 import { ConfigService } from './shared/utils/config.service';
 import { AuthenticateXhr } from './authenticate-xhr.backend';
+import { HandlerModule } from './handler/handler.module';
+import { ForbidenComponent } from './forbiden/forbiden.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    ForbidenComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import { AuthenticateXhr } from './authenticate-xhr.backend';
     DashboardModule,
     BrowserModule,
     HttpModule,
-    App
+    App,
+    HandlerModule,
+    AdminModule
   ],
   providers: [ConfigService, {
     provide: XHRBackend,

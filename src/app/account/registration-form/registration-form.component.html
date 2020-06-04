@@ -1,21 +1,31 @@
 
 
 
-  <div class="card bg-light mb-3" style="max-width: 22rem;margin-left:550px;margin-top: 100px;">
-    <div class="card-header"><b>SignUp Form</b></div>
-    <div class="card-body">
+  <div class="card bg-light mb-3 shadow-sm" style="max-width: 30rem;margin-left:450px;margin-top: 100px;">
+    <div class="card-header" 
+    style="background-color: #1f879e;"><h5 style="color: white;">
+     <i class="fa fa-address-card"></i> SignUp Form</h5></div>
+    <div class="card-body" style="background-color: white;">
       
       <div class="row">
         <div class="col-md-12">
             <form #f="ngForm" novalidate (ngSubmit)="registerUser(f)">
-                <div class="form-group">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
                     <label for="first-name">First name</label>
                     <input type="text" class="form-control" id="first-name" placeholder="First name" name="firstName" tmFocus ngModel>              
                 </div>
-                <div class="form-group">
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
                     <label for="last-name">Last name</label>
                     <input type="text" class="form-control" id="last-name" placeholder="Last name" name="lastName" ngModel>              
                 </div>
+                </div>
+              </div>
+              
+              
                 <div class="form-group">
                   <label for="email">Email</label>
                     <input id="email" type="text" required name="email" validateEmail class="form-control" placeholder="Email" ngModel  #email="ngModel">
@@ -25,13 +35,15 @@
                   <label for="password">Password</label>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password" ngModel>
                 </div>   
-                <!-- <div class="form-group">
-                   <label for="location">Location</label>
-                   <input type="text" class="form-control" id="location" placeholder="Location"  required name="location" ngModel>              
-                </div>  -->
+
+                <div class="form-group">
+                  <label for="password">Confirm Password</label>
+                  <input type="password" class="form-control" id="password" name="confirmPassword" placeholder="ConfirmPassword" ngModel>
+                </div> 
+               
       
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block" [disabled]="f.invalid || isRequesting">Sign Up</button>
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="f.invalid || isRequesting">Sign Up</button>
                     <app-spinner [isRunning]="isRequesting"></app-spinner> 
                 </div>
       
@@ -40,6 +52,8 @@
                   </div>               
                 
               </form>
+              <a class="nav-link"  style="margin-left: 170px;" routerLinkActive="active" routerLink="/login">
+                <b><u>login If Already  Account Created!</u> </b> </a>
          </div>
       </div>
     </div>

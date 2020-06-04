@@ -1,0 +1,25 @@
+<h2 style="margin-top: 60px;margin-left: 50px;">
+    <i class="fa fa-key"></i><b>Profile Setting</b>
+</h2>
+<hr style="margin-top: 0rem;">
+
+<div class="row">
+    <div class="col-md-2" style="margin-top:60px;margin-left: 20px;">
+        <button class="btn btn-primary mt-5" [disabled]="ispasswordchange" (click)="onPasswordChange()">
+       <i class="fa fa-lock"></i> Change Password
+        </button>
+        <button class="btn btn-primary mt-4" [disabled]="isusernamechange" (click)="onUsernameChange()">
+           <i class="fa fa-user"></i> Change UserName
+        </button>
+    </div>
+    
+    <div class="col-md-7" >
+        <div id="chnagePasswordId" [hidden]="!ispasswordchange">
+            <app-changehandlerpassword></app-changehandlerpassword>
+        </div>
+        <div id="changeusernameId" [hidden]="!isusernamechange">
+            <app-usernameupdate></app-usernameupdate>
+        </div>
+    </div>
+</div>
+

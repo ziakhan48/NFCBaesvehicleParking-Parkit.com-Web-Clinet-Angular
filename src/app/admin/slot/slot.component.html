@@ -1,0 +1,44 @@
+<div>
+    <div class="row" style="margin-top: 60px;margin-left: 50px;">
+        <h2 >
+            <i  class="fa fa-sitemap fa-1x" aria-hidden="true"></i><b> Parking Slots</b>
+        </h2>
+        <p style="margin-top: 10px;margin-left: 10px;">(Reserved<i class="fa fa-sitemap " aria-hidden="true" style="color:red;margin-left:10px;"></i><span style="margin-left: 10px;">Not Reserved </span>
+            <i class="fa fa-sitemap " aria-hidden="true" style="color:green;margin-left: 10px;"></i> )</p>
+    </div>
+
+    <hr style="margin-top: 0rem;">
+</div>
+<!-- <div class="col-md-4 offset-md-1 expensesDiv justify-content-center align-items-center" style="margin-top:-270px;margin-left:300px;"> -->
+    <div *ngIf="slotservice.slots?.length ==0" >
+        <div class="alert alert-warning" style="margin-top:-270px;margin-left:100px;">
+            Empty List................
+        </div>
+            </div>
+<div class="row" style="margin-top:20px;margin-left:20px">
+
+    <div *ngFor="let slot of slotservice.slots;let i=index">
+            <div  class="card bg-light mb-3 ml-5 mt-4" style="width: 200px;">
+                <div class="card-header"><b>Slot NO : {{slot?.slotNo}}</b></div>
+                <div class="card-body">
+                        <i *ngIf="slot?.isReserved  ; else notresereved"   class="fa fa-sitemap fa-4x" aria-hidden="true" style="color:red;margin-left: 40px;"></i>
+                        <ng-template #notresereved>
+                            <i class="fa fa-sitemap fa-4x" aria-hidden="true" style="color:green;margin-left: 40px;"></i>
+                            </ng-template>
+                </div>
+              </div>
+              <div style="margin-left: 92px;">
+                 <button [disabled]="slot?.isReserved"  class="btn btn-sm  text-white actionButton" matTooltip="Reserve Slot" style=" background-color:teal; border-style: none" (click)="reservation(slot?.slotId)">
+                     <i class="fa fa-keyboard-o" aria-hidden="true"></i>
+                 Reservation</button>
+              </div>
+
+              <div style="margin-left: 50px;margin-top: 10px;">
+                <button   class="btn btn-success btn-block  text-white actionButton" matTooltip="Reservation History" style="  border-style: none" [routerLink]="['/admin/slotreservationlist',slot?.slotId]">
+                  <i class="fa fa-history"></i>
+                Reservation History</button>
+             </div>
+        </div>
+</div>
+
+

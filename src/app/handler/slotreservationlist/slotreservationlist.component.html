@@ -1,0 +1,31 @@
+<div>
+    <h2 style="margin-top: 60px;margin-left: 50px;">
+      <i class="fa fa-list" aria-hidden="true"></i> <b style="margin-left: 4px;">Handler Profile</b>
+    </h2>
+    <hr style="margin-top: 0rem;">
+  </div>
+<table class="table table-hover" style="margin-left: 10px;background-color: white;" >
+    <thead>
+      <tr>
+        <th scope="col">Reservation Id</th>
+        <th scope="col">SLot Id</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Customer Email</th>
+        <th scope="col">Car No</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of slotreservationservice?.slotReservations ;let i=index">
+      <td>{{reservation?.slotReservationId}}</td>
+      <td>{{reservation?.slotId}}</td>
+      <td>{{reservation?.reservationTime}}</td>
+      <td>{{reservation?.ReservationEndTime}}</td>
+      <td>{{reservation?.customerName}}</td>
+      <td>{{reservation?.customerEmail}}</td>
+      <td>{{reservation.carNo}}</td>
+      </tr>
+    </tbody>
+  </table>
